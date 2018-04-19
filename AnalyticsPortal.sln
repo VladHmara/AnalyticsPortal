@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalyticsPortal", "AnalyticsPortal\AnalyticsPortal.csproj", "{E86FF432-4B35-4907-BDF1-12867FBA4299}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E86FF432-4B35-4907-BDF1-12867FBA4299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E86FF432-4B35-4907-BDF1-12867FBA4299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E86FF432-4B35-4907-BDF1-12867FBA4299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E86FF432-4B35-4907-BDF1-12867FBA4299}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8951B7CB-C971-44C8-8FEA-4B09BEC652F8}
+	EndGlobalSection
+EndGlobal

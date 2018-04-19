@@ -1,0 +1,130 @@
+﻿body {
+  font-family: Arial;
+}
+.title {
+  color: #04C8F7;
+  font-weight: 900;
+  font-size: 30px;
+}
+.main .case {
+  position: relative;
+  background-color: #01D1FF;
+  height: 100px;
+  margin-bottom: 25px;
+  padding: 10px;
+  overflow: hidden;
+}
+.main .case .case-title {
+  font-size: 20px;
+}
+.main .case .content {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+.main .case .content .count {
+  font-weight: 900;
+  font-size: 35px;
+  white-space: nowrap;
+}
+.main .case .content img {
+  height: 35px;
+  width: 35px;
+  vertical-align: middle;
+}
+.chart {
+  border-top: solid #01D1FF 3px;
+}
+.chart .head {
+  background-color: #F5F5F5;
+  padding: 10px;
+}
+.chart .head .chart-title {
+  font-size: 20px;
+  float: left;
+}
+.chart .head .buttons {
+  text-align: right;
+}
+.chart .chart-area #column {
+  background-color: #F5F5F5;
+  position: relative;
+  width: 14.285%;
+  height: 400px;
+  float: left;
+}
+.chart .chart-area #column .filling {
+  text-align: center;
+  min-height: 42px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: #01D1FF;
+}
+.chart .chart-area #column .count {
+  position: absolute;
+  font-size: 30px;
+  font-weight: 600;
+  color: white;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+.chart .chart-area .column {
+  background-color: #F5F5F5;
+  position: relative;
+  width: 14.285%;
+  height: 400px;
+  float: left;
+  border-right: 1px solid;
+  border-color: #E5E5E5;
+}
+.chart .chart-area .column .filling {
+  text-align: center;
+  min-height: 42px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: #01D1FF;
+}
+.chart .chart-area .column .count {
+  position: absolute;
+  font-size: 30px;
+  font-weight: 600;
+  color: white;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+.chart .chart-area .last-column {
+  background-color: #F5F5F5;
+  position: relative;
+  width: 14.285%;
+  height: 400px;
+  float: left;
+}
+.chart .chart-area .last-column .filling {
+  text-align: center;
+  min-height: 42px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: #01D1FF;
+}
+.chart .chart-area .last-column .count {
+  position: absolute;
+  font-size: 30px;
+  font-weight: 600;
+  color: white;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+.chart .names .column {
+  width: 14.285%;
+  float: left;
+  text-align: center;
+  font-weight: 700;
+  font-size: 10px;
+  margin-top: 5px;
+}

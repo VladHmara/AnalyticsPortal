@@ -1,0 +1,111 @@
+﻿@background-gray: #F5F5F5;
+@border-gray: #E5E5E5;
+@main-blue: #01D1FF;
+@title-blue: #04C8F7;
+
+body {
+    font-family: Arial;
+}
+
+.title {
+    color: @title-blue;
+    font-weight: 900;
+    font-size: 30px;
+}
+.main {
+    .case {
+        position: relative;
+        background-color: @main-blue;
+        height: 100px;
+        margin-bottom: 25px;
+        padding: 10px;
+        overflow:hidden;
+
+        .case-title {
+            font-size: 20px;
+        }
+
+        .content {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+
+            .count {
+                font-weight: 900;
+                font-size: 35px;
+                white-space: nowrap;
+            }
+
+            img {
+                height: 35px;
+                width: 35px;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+.chart {
+    border-top: solid @main-blue 3px;
+
+    .head {
+        background-color: @background-gray;
+        padding:10px;
+        .chart-title {
+            font-size: 20px;
+            float:left;
+        }
+        .buttons{
+            text-align:right;
+            }
+    }
+
+    .chart-area {
+        #column {
+            background-color: @background-gray;
+            position: relative;
+            width: 14.285%;
+            height: 400px;
+            float: left;
+
+            .filling {
+                text-align: center;
+                min-height: 42px;
+                width: 100%;
+                position: absolute;
+                bottom: 0;
+                background-color: @main-blue;
+            }
+
+            .count {
+                position: absolute;
+                font-size: 30px;
+                font-weight: 600;
+                color: white;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        .column {
+            #column;
+            border-right: 1px solid;
+            border-color: @border-gray;
+        }
+
+        .last-column {
+            #column;
+        }
+    }
+
+    .names {
+        .column {
+            width: 14.285%;
+            float: left;
+            text-align: center;
+            font-weight: 700;
+            font-size: 10px;
+            margin-top: 5px;
+        }
+    }
+}
