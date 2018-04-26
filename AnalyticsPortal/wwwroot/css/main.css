@@ -1,12 +1,12 @@
 ﻿body {
   font-family: Arial;
 }
-.title {
+.orders-title {
   color: #04C8F7;
   font-weight: 900;
   font-size: 30px;
 }
-.main .case {
+.orders-main .block {
   position: relative;
   background-color: #01D1FF;
   height: 100px;
@@ -14,96 +14,54 @@
   padding: 10px;
   overflow: hidden;
 }
-.main .case .case-title {
+.orders-main .block .block-title {
   font-size: 20px;
 }
-.main .case .content {
+.orders-main .block .content {
   position: absolute;
-  bottom: 5px;
-  right: 5px;
+  bottom: 0px;
+  right: 10px;
 }
-.main .case .content .count {
+.orders-main .block .content .count {
   font-weight: 900;
   font-size: 35px;
   white-space: nowrap;
 }
-.main .case .content img {
-  height: 35px;
-  width: 35px;
-  vertical-align: middle;
+.orders-main .block .content img {
+  height: 25px;
+  width: 25px;
+  vertical-align: baseline;
 }
-.chart {
+.ordes-chart {
   border-top: solid #01D1FF 3px;
 }
-.chart .head {
+.ordes-chart .chart-head {
   background-color: #F5F5F5;
   padding: 10px;
 }
-.chart .head .chart-title {
+.ordes-chart .chart-head .chart-title {
   font-size: 20px;
   float: left;
 }
-.chart .head .buttons {
+.ordes-chart .chart-head .buttons {
   text-align: right;
 }
-.chart .chart-area #column {
+.ordes-chart .chart-area {
+  margin: 0px;
+}
+.ordes-chart .chart-area .column {
   background-color: #F5F5F5;
-  position: relative;
-  width: 14.285%;
-  height: 400px;
-  float: left;
-}
-.chart .chart-area #column .filling {
-  text-align: center;
-  min-height: 42px;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  background-color: #01D1FF;
-}
-.chart .chart-area #column .count {
-  position: absolute;
-  font-size: 30px;
-  font-weight: 600;
-  color: white;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-}
-.chart .chart-area .column {
-  background-color: #F5F5F5;
-  position: relative;
-  width: 14.285%;
-  height: 400px;
-  float: left;
   border-right: 1px solid;
   border-color: #E5E5E5;
-}
-.chart .chart-area .column .filling {
-  text-align: center;
-  min-height: 42px;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  background-color: #01D1FF;
-}
-.chart .chart-area .column .count {
-  position: absolute;
-  font-size: 30px;
-  font-weight: 600;
-  color: white;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-}
-.chart .chart-area .last-column {
-  background-color: #F5F5F5;
   position: relative;
   width: 14.285%;
   height: 400px;
   float: left;
 }
-.chart .chart-area .last-column .filling {
+.ordes-chart .chart-area .column:last-child {
+  border: none;
+}
+.ordes-chart .chart-area .column .filling {
   text-align: center;
   min-height: 42px;
   width: 100%;
@@ -111,7 +69,7 @@
   bottom: 0;
   background-color: #01D1FF;
 }
-.chart .chart-area .last-column .count {
+.ordes-chart .chart-area .column .count {
   position: absolute;
   font-size: 30px;
   font-weight: 600;
@@ -120,11 +78,139 @@
   width: 100%;
   text-align: center;
 }
-.chart .names .column {
-  width: 14.285%;
-  float: left;
+.ordes-chart .chart-area .column .period-name {
+  position: absolute;
+  width: 100%;
   text-align: center;
   font-weight: 700;
   font-size: 10px;
+  bottom: -20px;
+}
+.orders {
+  width: 100%;
+}
+.orders .items-title {
+  font-size: 20px;
   margin-top: 5px;
+  margin-bottom: 5px;
+}
+.orders .items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.orders .items .order {
+  margin: 0px 10px 10px 0px;
+  height: 280px;
+  width: 140px;
+}
+.orders .items .order img {
+  width: 100%;
+  height: 50%;
+}
+.orders .items .order .top-orders-content {
+  background-color: #71BD01;
+}
+.orders .items .order .unordered-content {
+  background-color: #F82838;
+}
+.orders .items .order .content {
+  position: relative;
+  height: 50%;
+  width: 100%;
+  padding: 10px;
+}
+.orders .items .order .content .top-orders-info {
+  color: black;
+}
+.orders .items .order .content .unordered-info {
+  color: white;
+}
+.orders .items .order .content .info {
+  font-weight: 500;
+}
+.orders .items .order .content .statistic {
+  position: absolute;
+  bottom: 5px;
+  color: white;
+}
+.orders .items .order .content .statistic .count {
+  font-weight: 600;
+  font-size: 20px;
+  white-space: nowrap;
+}
+.orders .items .order .content .statistic img {
+  height: 15px;
+  width: 15px;
+  vertical-align: baseline;
+}
+.orders .items .last-order {
+  margin-right: 0px;
+}
+.food-title {
+  font-weight: 900;
+  font-size: 30px;
+}
+.top-orders {
+  border-top: solid #71BD01 3px;
+}
+.unordered {
+  border-top: solid #F82838 3px;
+}
+.payments-title {
+  font-weight: 900;
+  font-size: 30px;
+}
+.payments .block {
+  position: relative;
+  background-color: #CDF000;
+  height: 150px;
+  margin-bottom: 25px;
+  padding: 10px;
+  overflow: hidden;
+}
+.payments .block .block-title {
+  font-size: 20px;
+}
+.payments .block .content {
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+}
+.payments .block .content .count {
+  font-weight: 900;
+  font-size: 35px;
+  white-space: nowrap;
+}
+.payments .block .content img {
+  height: 25px;
+  width: 25px;
+  vertical-align: baseline;
+}
+.tips .block {
+  position: relative;
+  border-top: solid #CDF000 3px;
+  height: 100px;
+  margin-bottom: 25px;
+  padding: 10px;
+  overflow: hidden;
+}
+.tips .block .block-title {
+  font-size: 20px;
+}
+.tips .block .content {
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+}
+.tips .block .content .count {
+  font-weight: 900;
+  font-size: 50px;
+  white-space: nowrap;
+}
+.tips .block .content img {
+  height: 50px;
+  width: 50px;
+  vertical-align: baseline;
 }

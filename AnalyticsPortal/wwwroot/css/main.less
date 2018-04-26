@@ -1,34 +1,39 @@
 ﻿@background-gray: #F5F5F5;
 @border-gray: #E5E5E5;
-@main-blue: #01D1FF;
+@background-blue: #01D1FF;
 @title-blue: #04C8F7;
+@green: #71BD01;
+@red: #F82838;
+@lime-green: #CDF000;
 
 body {
     font-family: Arial;
 }
 
-.title {
+
+.orders-title {
     color: @title-blue;
     font-weight: 900;
     font-size: 30px;
 }
-.main {
-    .case {
+
+.orders-main {
+    .block {
         position: relative;
-        background-color: @main-blue;
+        background-color: @background-blue;
         height: 100px;
         margin-bottom: 25px;
         padding: 10px;
-        overflow:hidden;
+        overflow: hidden;
 
-        .case-title {
+        .block-title {
             font-size: 20px;
         }
 
         .content {
             position: absolute;
-            bottom: 5px;
-            right: 5px;
+            bottom: 0px;
+            right: 10px;
 
             .count {
                 font-weight: 900;
@@ -37,35 +42,46 @@ body {
             }
 
             img {
-                height: 35px;
-                width: 35px;
-                vertical-align: middle;
+                height: 25px;
+                width: 25px;
+                vertical-align: baseline;
             }
         }
     }
 }
-.chart {
-    border-top: solid @main-blue 3px;
 
-    .head {
+.ordes-chart {
+    border-top: solid @background-blue 3px;
+
+    .chart-head {
         background-color: @background-gray;
-        padding:10px;
+        padding: 10px;
+
         .chart-title {
             font-size: 20px;
-            float:left;
+            float: left;
         }
-        .buttons{
-            text-align:right;
-            }
+
+        .buttons {
+            text-align: right;
+        }
     }
 
     .chart-area {
-        #column {
+        margin: 0px;
+
+        .column {
             background-color: @background-gray;
+            border-right: 1px solid;
+            border-color: @border-gray;
             position: relative;
             width: 14.285%;
             height: 400px;
             float: left;
+
+            &:last-child {
+                border: none;
+            }
 
             .filling {
                 text-align: center;
@@ -73,7 +89,7 @@ body {
                 width: 100%;
                 position: absolute;
                 bottom: 0;
-                background-color: @main-blue;
+                background-color: @background-blue;
             }
 
             .count {
@@ -85,27 +101,179 @@ body {
                 width: 100%;
                 text-align: center;
             }
-        }
 
-        .column {
-            #column;
-            border-right: 1px solid;
-            border-color: @border-gray;
-        }
-
-        .last-column {
-            #column;
-        }
-    }
-
-    .names {
-        .column {
-            width: 14.285%;
-            float: left;
-            text-align: center;
-            font-weight: 700;
-            font-size: 10px;
-            margin-top: 5px;
+            .period-name {
+                position: absolute;
+                width: 100%;
+                text-align: center;
+                font-weight: 700;
+                font-size: 10px;
+                bottom: -20px;
+            }
         }
     }
 }
+
+
+.orders {
+    width: 100%;
+
+    .items-title {
+        font-size: 20px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .items {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        .order {
+            margin: 0px 10px 10px 0px;
+            height: 280px;
+            width: 140px;
+
+            img {
+                width: 100%;
+                height: 50%;
+            }
+
+            .top-orders-content {
+                background-color: @green;
+            }
+
+            .unordered-content {
+                background-color: @red;
+            }
+
+            .content {
+                position: relative;
+                height: 50%;
+                width: 100%;
+                padding: 10px;
+
+                .top-orders-info {
+                    color: black;
+                }
+
+                .unordered-info {
+                    color: white;
+                }
+
+                .info {
+                    font-weight: 500;
+                }
+
+                .statistic {
+                    position: absolute;
+                    bottom: 5px;
+                    color: white;
+
+                    .count {
+                        font-weight: 600;
+                        font-size: 20px;
+                        white-space: nowrap;
+                    }
+
+                    img {
+                        height: 15px;
+                        width: 15px;
+                        vertical-align: baseline;
+                    }
+                }
+            }
+        }
+
+        .last-order {
+            margin-right: 0px;
+        }
+    }
+}
+
+.food-title {
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.top-orders {
+    border-top: solid @green 3px;
+}
+
+.unordered {
+    border-top: solid @red 3px;
+}
+
+
+.payments-title {
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.payments {
+    .block {
+        position: relative;
+        background-color: @lime-green;
+        height: 150px;
+        margin-bottom: 25px;
+        padding: 10px;
+        overflow: hidden;
+
+        .block-title {
+            font-size: 20px;
+        }
+
+        .content {
+            position: absolute;
+            bottom: 0px;
+            right: 10px;
+
+            .count {
+                font-weight: 900;
+                font-size: 35px;
+                white-space: nowrap;
+            }
+
+            img {
+                height: 25px;
+                width: 25px;
+                vertical-align: baseline;
+            }
+        }
+    }
+}
+
+.tips {
+    .block {
+        position: relative;
+        border-top: solid @lime-green 3px;
+        height: 100px;
+        margin-bottom: 25px;
+        padding: 10px;
+        overflow: hidden;
+
+        .block-title {
+            font-size: 20px;
+        }
+
+        .content {
+            position: absolute;
+            bottom: 0px;
+            right: 10px;
+
+            .count {
+                font-weight: 900;
+                font-size: 50px;
+                white-space: nowrap;
+            }
+
+            img {
+                height: 50px;
+                width: 50px;
+                vertical-align: baseline;
+            }
+        }
+    }
+}
+

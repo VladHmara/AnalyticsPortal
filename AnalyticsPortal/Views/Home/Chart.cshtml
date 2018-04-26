@@ -1,0 +1,15 @@
+﻿@using AnalyticsPortal.ViewModels
+@model ChartViewModel
+
+@for (int i = 0; i < Model.PeriodNames.Count; i++)
+{
+    <div class="column">
+      <div class="filling" style="height:@Model.FillPercentages[i]"></div>
+      <div class="count">
+          @Model.Counts[i]
+      </div>
+      <div class="period-name">
+          @Model.PeriodNames[i]
+      </div>
+    </div>
+}

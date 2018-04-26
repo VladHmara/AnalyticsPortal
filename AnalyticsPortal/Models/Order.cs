@@ -12,6 +12,7 @@ namespace AnalyticsPortal.Models
         public double TotalPrice { get; set; }
         public State State { get; set; }
         public OrderFor OrderFor { get; set; }
+        public PaidBy PaidBy { get; set; }
         public DateTime OpendDate { get; set; }
         public DateTime ClosedDate { get; set; }
         public virtual ICollection<OrderItemOrder> OrderItemOrders { get; set; }
@@ -31,5 +32,10 @@ namespace AnalyticsPortal.Models
     {
         Table,
         Seat
+    }
+    public enum PaidBy
+    {
+        Card,
+        Cash
     }
 }

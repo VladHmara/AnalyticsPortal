@@ -10,9 +10,11 @@ namespace AnalyticsPortal.Models
         public Guid Id { get; set; }
 
         public Guid OrderId { get; set; }
-        public Order Order { get; set; }
+        public virtual Order Order { get; set; }
 
         public Guid OrderItemId { get; set; }
-        public OrderItem OrderItem { get; set; }
+        public virtual OrderItem OrderItem { get; set; }
+
+        public double Price { get; set; }
     }
 }

@@ -11,9 +11,10 @@ using System;
 namespace AnalyticsPortal.Migrations
 {
     [DbContext(typeof(OrdersContext))]
-    partial class OrdersContextModelSnapshot : ModelSnapshot
+    [Migration("20180425144915_Add_Price_To_OrderItemOrder_1")]
+    partial class Add_Price_To_OrderItemOrder_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,8 +31,6 @@ namespace AnalyticsPortal.Migrations
                     b.Property<DateTime>("OpendDate");
 
                     b.Property<int>("OrderFor");
-
-                    b.Property<int>("PaidBy");
 
                     b.Property<int>("State");
 

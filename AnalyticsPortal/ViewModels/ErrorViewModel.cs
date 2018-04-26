@@ -1,6 +1,6 @@
 using System;
 
-namespace AnalyticsPortal.Models
+namespace AnalyticsPortal.ViewModels
 {
     public class ErrorViewModel
     {
