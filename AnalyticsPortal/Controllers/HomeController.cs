@@ -34,37 +34,29 @@ namespace AnalyticsPortal.Controllers
 
             OrdersViewModel ovm = new OrdersViewModel()
             {
-                AverageCheck = averageCheck.ToString(".00"),
-                AmountMoney = amountMoney.ToString(".00"),
-                NumberOfOrders = numberOfOrders.ToString(),
-                TotalOrderedItems = totalOrderedItems.ToString()
+                AverageCheck = averageCheck.ToString("$0.##"),
+                AmountMoney = amountMoney.ToString("$0.##"),
+                NumberOfOrders = numberOfOrders,
+                TotalOrderedItems = totalOrderedItems
             };
 
             return PartialView(ovm);
         }
 
-        public IActionResult Chart(string type, string period)
+        [HttpPost]
+        public IActionResult Chart(NumType type, Period period)
         {
             ChartViewModel cvm;
-            switch (type + period)
+            switch (period)
             {
-                case "OrdersDay":
-                    cvm = GetChartVMByOrdersDay();
+                case Period.Day:
+                    cvm = GetChartVMByDay(type);
                     break;
-                case "OrdersWeek":
-                    cvm = GetChartVMByOrdersWeek();
+                case Period.Week:
+                    cvm = GetChartVMByWeek(type);
                     break;
-                case "OrdersMonth":
-                    cvm = GetChartVMByOrdersMonth();
-                    break;
-                case "MoneyDay":
-                    cvm = GetChartVMByMoneyDay();
-                    break;
-                case "MoneyWeek":
-                    cvm = GetChartVMByMoneyWeek();
-                    break;
-                case "MoneyMonth":
-                    cvm = GetChartVMByMoneyMonth();
+                case Period.Month:
+                    cvm = GetChartVMByMonth(type);
                     break;
                 default:
                     cvm = new ChartViewModel();
@@ -74,7 +66,7 @@ namespace AnalyticsPortal.Controllers
         }
 
         #region GetChartVM
-        private ChartViewModel GetChartVMByOrdersDay()
+        private ChartViewModel GetChartVMByDay(NumType type)
         {
             List<double> counts = new List<double>();
             DateTime now = DateTime.Now.Date;
@@ -82,15 +74,15 @@ namespace AnalyticsPortal.Controllers
             for (int i = 6; i >= 0; i--)
             {
                 DateTime date = now.AddDays(-i);
-                double count = db.Orders
-                    .Count(o => o.ClosedDate.Date.Equals(date));
+                IQueryable<Order> query = db.Orders.Where(o => o.ClosedDate.Date.Equals(date));
+                double count = GetCountFromQuery(query, type);
                 counts.Add(count);
             }
 
-            return new ChartViewModel(counts, NumType.Orders, Period.Day);
+            return new ChartViewModel(counts, type, Period.Day);
         }
 
-        private ChartViewModel GetChartVMByOrdersWeek()
+        private ChartViewModel GetChartVMByWeek(NumType type)
         {
             DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
             Calendar cal = dfi.Calendar;
@@ -102,75 +94,18 @@ namespace AnalyticsPortal.Controllers
             {
                 DateTime date = now.AddDays(-7 * i);
                 int week = cal.GetWeekOfYear(date, dfi.CalendarWeekRule, dfi.FirstDayOfWeek) - 1;
-                double count = db.Orders
-                    .Count(o =>
-                        o.ClosedDate.Year.Equals(date.Year) &&
-                        ((o.ClosedDate.DayOfYear - 1) / 7).Equals(week));
-                counts.Add(count);
-            }
-
-            return new ChartViewModel(counts, NumType.Orders, Period.Week);
-        }
-
-        private ChartViewModel GetChartVMByOrdersMonth()
-        {
-            List<double> counts = new List<double>();
-            DateTime now = DateTime.Now.Date;
-
-            for (int i = 6; i >= 0; i--)
-            {
-                DateTime date = now.AddMonths(-i);
-                double count = db.Orders
-                    .Count(o =>
-                        o.ClosedDate.Year.Equals(date.Year) &&
-                        o.ClosedDate.Month.Equals(date.Month));
-                counts.Add(count);
-            }
-
-            return new ChartViewModel(counts, NumType.Orders, Period.Month);
-        }
-
-        private ChartViewModel GetChartVMByMoneyDay()
-        {
-            List<double> counts = new List<double>();
-            DateTime now = DateTime.Now.Date;
-
-            for (int i = 6; i >= 0; i--)
-            {
-                DateTime date = now.AddDays(-i);
-                double count = db.Orders
-                    .Where(o => o.ClosedDate.Date.Equals(date))
-                    .Sum(o => o.TotalPrice);
-                counts.Add(count);
-            }
-
-            return new ChartViewModel(counts, NumType.Money, Period.Day);
-        }
-
-        private ChartViewModel GetChartVMByMoneyWeek()
-        {
-            DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
-            Calendar cal = dfi.Calendar;
-
-            List<double> counts = new List<double>();
-            DateTime now = DateTime.Now.Date;
-
-            for (int i = 6; i >= 0; i--)
-            {
-                DateTime date = now.AddDays(-7 * i);
-                int week = cal.GetWeekOfYear(date, dfi.CalendarWeekRule, dfi.FirstDayOfWeek) - 1;
-                double count = db.Orders
+                IQueryable<Order> query = db.Orders
                     .Where(o =>
                         o.ClosedDate.Year.Equals(date.Year) &&
-                        ((o.ClosedDate.DayOfYear - 1) / 7).Equals(week))
-                    .Sum(o => o.TotalPrice);
+                        ((o.ClosedDate.DayOfYear - 1) / 7).Equals(week));
+                double count = GetCountFromQuery(query, type);
                 counts.Add(count);
             }
 
-            return new ChartViewModel(counts, NumType.Money, Period.Week);
+            return new ChartViewModel(counts, type, Period.Week);
         }
 
-        private ChartViewModel GetChartVMByMoneyMonth()
+        private ChartViewModel GetChartVMByMonth(NumType type)
         {
             List<double> counts = new List<double>();
             DateTime now = DateTime.Now.Date;
@@ -178,14 +113,27 @@ namespace AnalyticsPortal.Controllers
             for (int i = 6; i >= 0; i--)
             {
                 DateTime date = now.AddMonths(-i);
-                double count = db.Orders.Where(o =>
+                IQueryable<Order> query = db.Orders.Where(o =>
                     o.ClosedDate.Year.Equals(date.Year) &&
-                    o.ClosedDate.Month.Equals(date.Month))
-                    .Sum(o => o.TotalPrice);
+                    o.ClosedDate.Month.Equals(date.Month));
+                double count = GetCountFromQuery(query, type);
                 counts.Add(count);
             }
 
-            return new ChartViewModel(counts, NumType.Money, Period.Month);
+            return new ChartViewModel(counts, type, Period.Month);
+        }
+
+        private double GetCountFromQuery(IQueryable<Order> query,NumType type)
+        {
+            switch (type)
+            {
+                case NumType.Money:
+                    return query.Sum(o => o.TotalPrice);
+                case NumType.Orders:
+                    return query.Count();
+                default:
+                    return 0;
+            }
         }
         #endregion
 
@@ -198,12 +146,12 @@ namespace AnalyticsPortal.Controllers
                 (oi, oio) => new OrderItemModel
                 {
                     Name = oi.Name,
-                    Price = oi.Price.ToString(".00"),
+                    Price = oi.Price.ToString("0.##"),
                     Media = oi.Media,
-                    NumberOfOrders = oio.Count().ToString(),
-                    Amount = oio.Sum(p => p.Price).ToString(".00")
+                    NumberOfOrders = oio.Count(),
+                    Amount = oio.Sum(p => p.Price).ToString("0.##")
                 })
-                .OrderBy(oio => oio.NumberOfOrders)
+                .OrderByDescending(oio => oio.NumberOfOrders)
                 .Take(10)
                 .ToList();
 
@@ -214,12 +162,12 @@ namespace AnalyticsPortal.Controllers
                 (oi, oio) => new OrderItemModel
                 {
                     Name = oi.Name,
-                    Price = oi.Price.ToString(".00"),
+                    Price = oi.Price.ToString("0.##"),
                     Media = oi.Media,
-                    NumberOfOrders = oio.Count().ToString(),
-                    Amount = oio.Sum(p => p.Price).ToString(".00")
+                    NumberOfOrders = oio.Count(),
+                    Amount = oio.Sum(p => p.Price).ToString("0.##")
                 }).
-                OrderByDescending(oio => oio.NumberOfOrders)
+                OrderBy(oio => oio.NumberOfOrders)
                 .Take(10)
                 .ToList();
 
@@ -246,13 +194,13 @@ namespace AnalyticsPortal.Controllers
 
             PaymentsViewModel pvm = new PaymentsViewModel()
             {
-                OperationsNumberByCard = operationsNumberByCard.ToString(),
-                OperationsNumberByCash = operationsNumberByCash.ToString(),
-                AmountOfMoneyByCard = amountOfMoneyByCard.ToString(".00"),
-                AmountOfMoneyByCash = amountOfMoneyByCash.ToString(".00"),
-                TipsAverage = tipsAverage.ToString(".0"),
-                TipsNumbers = tipsNumbers.ToString(),
-                TipsSum = tipsSum.ToString(".00")
+                OperationsNumberByCard = operationsNumberByCard,
+                OperationsNumberByCash = operationsNumberByCash,
+                AmountOfMoneyByCard = amountOfMoneyByCard.ToString("0.##"),
+                AmountOfMoneyByCash = amountOfMoneyByCash.ToString("0.##"),
+                TipsAverage = tipsAverage.ToString("0.#%"),
+                TipsNumbers = tipsNumbers,
+                TipsSum = tipsSum.ToString("0.##")
             };
             return PartialView(pvm);
         }

@@ -31,10 +31,10 @@ namespace AnalyticsPortal.ViewModels
         {
             switch (type) {
                 case NumType.Orders:
-                    Counts = counts.ConvertAll(c=>c.ToString("."));
+                    Counts = counts.ConvertAll(c=>c.ToString("0."));
                     break;
                 case NumType.Money:
-                    Counts = counts.ConvertAll(c => c.ToString(".00"));
+                    Counts = counts.ConvertAll(c => c.ToString("$0.##"));
                     break;
             }
         }
@@ -44,18 +44,19 @@ namespace AnalyticsPortal.ViewModels
             List<double> fillPercentages = new List<double>();
             double maxCount = counts.Max();
             foreach (double count in counts)
-                fillPercentages.Add((maxCount / count) * 100);
-            FillPercentages = fillPercentages.ConvertAll(p=>p.ToString(".") + "%");
+                fillPercentages.Add((count / maxCount) * 100);
+            FillPercentages = fillPercentages.ConvertAll(p=>p.ToString("0.#") + "%");
         }
 
         private void SetPeriodName(Period period)
         {
+            List<string> periodNames = new List<string>();
             DateTime now = DateTime.Now.Date;
             switch (period)
             {
                 case Period.Day:
                     for (int i = 6; i >= 0; i--)
-                        PeriodNames.Add((now.AddDays(-i).Day.ToString()));
+                        periodNames.Add((now.AddDays(-i).Day.ToString()));
                     break;
                 case Period.Week:
                     DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
@@ -64,14 +65,15 @@ namespace AnalyticsPortal.ViewModels
                     {
                         DateTime date = now.AddDays(-7 * i);
                         int weekNum = cal.GetWeekOfYear(date, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
-                        PeriodNames.Add(weekNum.ToString());
+                        periodNames.Add(weekNum.ToString());
                     }
                     break;
                 case Period.Month:
                     for (int i = 6; i >= 0; i--)
-                        PeriodNames.Add((now.AddMonths(-i).ToString("MMM")));
+                        periodNames.Add((now.AddMonths(-i).ToString("MMM")));
                     break;
             }
+            PeriodNames = periodNames;
         }
     }
     public enum NumType

@@ -10,7 +10,7 @@ namespace AnalyticsPortal.ViewModels
         public string Name { get; set; }
         public string Price { get; set; }
         public string Media { get; set; }
-        public string NumberOfOrders { get; set; }
+        public int NumberOfOrders { get; set; }
         public string Amount { get; set; }
     }
 }

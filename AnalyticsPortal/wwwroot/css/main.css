@@ -105,6 +105,9 @@
   height: 280px;
   width: 140px;
 }
+.orders .items .order:last-child {
+  margin-right: 0px;
+}
 .orders .items .order img {
   width: 100%;
   height: 50%;
@@ -144,9 +147,6 @@
   height: 15px;
   width: 15px;
   vertical-align: baseline;
-}
-.orders .items .last-order {
-  margin-right: 0px;
 }
 .food-title {
   font-weight: 900;

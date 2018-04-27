@@ -9,7 +9,7 @@ namespace AnalyticsPortal.ViewModels
     {
         public string AverageCheck { get; set; }
         public string AmountMoney { get; set; }
-        public string NumberOfOrders { get; set; }
-        public string TotalOrderedItems { get; set; }
+        public int NumberOfOrders { get; set; }
+        public int TotalOrderedItems { get; set; }
     }
 }

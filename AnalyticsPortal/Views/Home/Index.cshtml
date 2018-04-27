@@ -1,7 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+@using AnalyticsPortal.ViewModels
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/jquery.unobtrusive-ajax.js"></script>
 <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 <link href="~/css/main.css" rel="stylesheet" />
 <div style="width:90%;">
@@ -329,7 +331,7 @@
                     </div>
                 </div>
             </div>
-            <div class="order last-order">
+            <div class="order">
                 <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
                 <div class="content unordered-content">
                     <div class="info unordered-info">
