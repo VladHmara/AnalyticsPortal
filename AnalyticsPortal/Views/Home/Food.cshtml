@@ -1,0 +1,50 @@
+﻿@using AnalyticsPortal.ViewModels
+@model FoodViewModel
+
+<div class="order-items top-orders">
+    <div class="items-title">
+        Top orders
+    </div>
+    <div class="items">
+        @foreach (OrderItemModel item in Model.TopOrders)
+        {
+        <div class="order">
+            <img src="@item.Media" />
+            <div class="content top-orders-content">
+                <div class="info top-orders-info">
+                    <div>@item.Name</div>
+                    <div>@item.Price</div>
+                </div>
+                <div class="statistic">
+                    <div class="count"><img src="~/images/rice-bowl.svg" /> @item.NumberOfOrders</div>
+                    <div class="count"><img src="~/images/tags.svg" /> @item.Amount</div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+<div class="order-items unordered">
+    <div class="items-title">
+        Unordered
+    </div>
+    <div class="items">
+        @foreach (OrderItemModel item in Model.Unordered)
+        {
+            <div class="order">
+                <img src="@item.Media" />
+                <div class="content unordered-content">
+                    <div class="info unordered-info">
+                        <div>@item.Name</div>
+                        <div>@item.Price</div>
+                    </div>
+                    <div class="statistic">
+                        <div class="count"><img src="~/images/rice-bowl.svg" /> @item.NumberOfOrders</div>
+                        <div class="count"><img src="~/images/tags.svg" /> @item.Amount</div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

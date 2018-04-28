@@ -1,12 +1,31 @@
 ﻿body {
   font-family: Arial;
 }
-.orders-title {
+.carousel {
+  padding: 0 5% 0 5%;
+}
+.carousel .carousel-inner {
+  min-height: 100%;
+}
+.carousel .item {
+  margin-top: 50px;
+}
+.carousel .carousel-control {
+  width: 5%;
+  color: black;
+}
+.carousel .carousel-control.right {
+  background-image: none;
+}
+.carousel .carousel-control.left {
+  background-image: none;
+}
+.orders .orders-title {
   color: #04C8F7;
   font-weight: 900;
   font-size: 30px;
 }
-.orders-main .block {
+.orders .orders-main .block {
   position: relative;
   background-color: #01D1FF;
   height: 100px;
@@ -14,42 +33,43 @@
   padding: 10px;
   overflow: hidden;
 }
-.orders-main .block .block-title {
+.orders .orders-main .block .block-title {
   font-size: 20px;
 }
-.orders-main .block .content {
+.orders .orders-main .block .content {
   position: absolute;
   bottom: 0px;
   right: 10px;
 }
-.orders-main .block .content .count {
+.orders .orders-main .block .content .count {
   font-weight: 900;
   font-size: 35px;
   white-space: nowrap;
 }
-.orders-main .block .content img {
+.orders .orders-main .block .content img {
   height: 25px;
   width: 25px;
   vertical-align: baseline;
 }
-.ordes-chart {
+.orders .ordes-chart {
   border-top: solid #01D1FF 3px;
 }
-.ordes-chart .chart-head {
+.orders .ordes-chart .chart-head {
   background-color: #F5F5F5;
   padding: 10px;
 }
-.ordes-chart .chart-head .chart-title {
+.orders .ordes-chart .chart-head .chart-title {
   font-size: 20px;
   float: left;
 }
-.ordes-chart .chart-head .buttons {
+.orders .ordes-chart .chart-head .buttons {
   text-align: right;
 }
-.ordes-chart .chart-area {
+.orders .ordes-chart .chart-area {
   margin: 0px;
+  padding-bottom: 25px;
 }
-.ordes-chart .chart-area .column {
+.orders .ordes-chart .chart-area .column {
   background-color: #F5F5F5;
   border-right: 1px solid;
   border-color: #E5E5E5;
@@ -58,10 +78,10 @@
   height: 400px;
   float: left;
 }
-.ordes-chart .chart-area .column:last-child {
+.orders .ordes-chart .chart-area .column:last-child {
   border: none;
 }
-.ordes-chart .chart-area .column .filling {
+.orders .ordes-chart .chart-area .column .filling {
   text-align: center;
   min-height: 42px;
   width: 100%;
@@ -69,7 +89,7 @@
   bottom: 0;
   background-color: #01D1FF;
 }
-.ordes-chart .chart-area .column .count {
+.orders .ordes-chart .chart-area .column .count {
   position: absolute;
   font-size: 30px;
   font-weight: 600;
@@ -78,7 +98,7 @@
   width: 100%;
   text-align: center;
 }
-.ordes-chart .chart-area .column .period-name {
+.orders .ordes-chart .chart-area .column .period-name {
   position: absolute;
   width: 100%;
   text-align: center;
@@ -86,83 +106,84 @@
   font-size: 10px;
   bottom: -20px;
 }
-.orders {
+.food .food-title {
+  font-weight: 900;
+  font-size: 30px;
+}
+.food .food-content .order-items {
   width: 100%;
 }
-.orders .items-title {
+.food .food-content .order-items .items-title {
   font-size: 20px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
-.orders .items {
+.food .food-content .order-items .items {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
-.orders .items .order {
+.food .food-content .order-items .items .order {
   margin: 0px 10px 10px 0px;
   height: 280px;
   width: 140px;
 }
-.orders .items .order:last-child {
+.food .food-content .order-items .items .order:last-child {
   margin-right: 0px;
 }
-.orders .items .order img {
+.food .food-content .order-items .items .order img {
   width: 100%;
   height: 50%;
+  object-fit: cover;
 }
-.orders .items .order .top-orders-content {
+.food .food-content .order-items .items .order .top-orders-content {
   background-color: #71BD01;
 }
-.orders .items .order .unordered-content {
+.food .food-content .order-items .items .order .unordered-content {
   background-color: #F82838;
 }
-.orders .items .order .content {
+.food .food-content .order-items .items .order .content {
   position: relative;
   height: 50%;
   width: 100%;
   padding: 10px;
 }
-.orders .items .order .content .top-orders-info {
+.food .food-content .order-items .items .order .content .top-orders-info {
   color: black;
 }
-.orders .items .order .content .unordered-info {
+.food .food-content .order-items .items .order .content .unordered-info {
   color: white;
 }
-.orders .items .order .content .info {
+.food .food-content .order-items .items .order .content .info {
   font-weight: 500;
 }
-.orders .items .order .content .statistic {
+.food .food-content .order-items .items .order .content .statistic {
   position: absolute;
   bottom: 5px;
   color: white;
 }
-.orders .items .order .content .statistic .count {
+.food .food-content .order-items .items .order .content .statistic .count {
   font-weight: 600;
   font-size: 20px;
   white-space: nowrap;
 }
-.orders .items .order .content .statistic img {
+.food .food-content .order-items .items .order .content .statistic img {
   height: 15px;
   width: 15px;
   vertical-align: baseline;
 }
-.food-title {
-  font-weight: 900;
-  font-size: 30px;
-}
-.top-orders {
+.food .food-content .top-orders {
   border-top: solid #71BD01 3px;
 }
-.unordered {
+.food .food-content .unordered {
   border-top: solid #F82838 3px;
 }
-.payments-title {
+.payments .payments-title {
   font-weight: 900;
   font-size: 30px;
 }
-.payments .block {
+.payments .payments-content .payments .block {
   position: relative;
   background-color: #CDF000;
   height: 150px;
@@ -170,25 +191,25 @@
   padding: 10px;
   overflow: hidden;
 }
-.payments .block .block-title {
+.payments .payments-content .payments .block .block-title {
   font-size: 20px;
 }
-.payments .block .content {
+.payments .payments-content .payments .block .content {
   position: absolute;
   bottom: 0px;
   right: 10px;
 }
-.payments .block .content .count {
+.payments .payments-content .payments .block .content .count {
   font-weight: 900;
   font-size: 35px;
   white-space: nowrap;
 }
-.payments .block .content img {
+.payments .payments-content .payments .block .content img {
   height: 25px;
   width: 25px;
   vertical-align: baseline;
 }
-.tips .block {
+.payments .payments-content .tips .block {
   position: relative;
   border-top: solid #CDF000 3px;
   height: 100px;
@@ -196,20 +217,20 @@
   padding: 10px;
   overflow: hidden;
 }
-.tips .block .block-title {
+.payments .payments-content .tips .block .block-title {
   font-size: 20px;
 }
-.tips .block .content {
+.payments .payments-content .tips .block .content {
   position: absolute;
   bottom: 0px;
   right: 10px;
 }
-.tips .block .content .count {
+.payments .payments-content .tips .block .content .count {
   font-weight: 900;
   font-size: 50px;
   white-space: nowrap;
 }
-.tips .block .content img {
+.payments .payments-content .tips .block .content img {
   height: 50px;
   width: 50px;
   vertical-align: baseline;

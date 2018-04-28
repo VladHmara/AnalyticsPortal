@@ -21,8 +21,7 @@ namespace AnalyticsPortal.Controllers
 
         public IActionResult Index()
         {
-            double averageCheck = 0; //db.Orders.Average(o => o.TotalPrice);
-            return View(averageCheck);
+            return View();
         }
 
         public IActionResult Orders()
@@ -146,10 +145,10 @@ namespace AnalyticsPortal.Controllers
                 (oi, oio) => new OrderItemModel
                 {
                     Name = oi.Name,
-                    Price = oi.Price.ToString("0.##"),
+                    Price = oi.Price.ToString("$0.##"),
                     Media = oi.Media,
                     NumberOfOrders = oio.Count(),
-                    Amount = oio.Sum(p => p.Price).ToString("0.##")
+                    Amount = oio.Sum(p => p.Price).ToString("$0.##")
                 })
                 .OrderByDescending(oio => oio.NumberOfOrders)
                 .Take(10)
@@ -162,10 +161,10 @@ namespace AnalyticsPortal.Controllers
                 (oi, oio) => new OrderItemModel
                 {
                     Name = oi.Name,
-                    Price = oi.Price.ToString("0.##"),
+                    Price = oi.Price.ToString("$0.##"),
                     Media = oi.Media,
                     NumberOfOrders = oio.Count(),
-                    Amount = oio.Sum(p => p.Price).ToString("0.##")
+                    Amount = oio.Sum(p => p.Price).ToString("$0.##")
                 }).
                 OrderBy(oio => oio.NumberOfOrders)
                 .Take(10)
@@ -188,7 +187,7 @@ namespace AnalyticsPortal.Controllers
             double amountOfMoneyByCard = db.Orders.Where(o => o.PaidBy == PaidBy.Card).Sum(o => o.TotalPrice);
             double amountOfMoneyByCash = db.Orders.Where(o => o.PaidBy == PaidBy.Cash).Sum(o => o.TotalPrice);
 
-            double tipsAverage = db.Orders.Sum(o => o.TotalPrice / o.TipsAmount);
+            double tipsAverage = db.Orders.Sum(o => o.TipsAmount) / db.Orders.Sum(o => o.TotalPrice);
             int tipsNumbers = db.Orders.Count(o => o.TipsAmount != 0.0);
             double tipsSum = db.Orders.Sum(o => o.TipsAmount);
 
@@ -196,27 +195,13 @@ namespace AnalyticsPortal.Controllers
             {
                 OperationsNumberByCard = operationsNumberByCard,
                 OperationsNumberByCash = operationsNumberByCash,
-                AmountOfMoneyByCard = amountOfMoneyByCard.ToString("0.##"),
-                AmountOfMoneyByCash = amountOfMoneyByCash.ToString("0.##"),
+                AmountOfMoneyByCard = amountOfMoneyByCard.ToString("$0.##"),
+                AmountOfMoneyByCash = amountOfMoneyByCash.ToString("$0.##"),
                 TipsAverage = tipsAverage.ToString("0.#%"),
                 TipsNumbers = tipsNumbers,
-                TipsSum = tipsSum.ToString("0.##")
+                TipsSum = tipsSum.ToString("$0.##")
             };
             return PartialView(pvm);
-        }
-
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
         }
 
         public IActionResult Error()

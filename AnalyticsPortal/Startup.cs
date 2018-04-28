@@ -22,7 +22,7 @@ namespace AnalyticsPortal
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        { 
+        {
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<OrdersContext>(options =>
                 options.UseSqlServer(connection));
@@ -50,6 +50,12 @@ namespace AnalyticsPortal
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<OrdersContext>();
+                context.Database.Migrate();
+            }
         }
     }
 }

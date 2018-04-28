@@ -34,7 +34,7 @@ namespace AnalyticsPortal.ViewModels
                     Counts = counts.ConvertAll(c=>c.ToString("0."));
                     break;
                 case NumType.Money:
-                    Counts = counts.ConvertAll(c => c.ToString("$0.##"));
+                    Counts = counts.ConvertAll(c => c.ToString("$0."));
                     break;
             }
         }

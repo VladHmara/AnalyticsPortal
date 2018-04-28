@@ -1,0 +1,45 @@
+﻿@using AnalyticsPortal.ViewModels
+@model PaymentsViewModel
+
+<div class="payments">
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <div class="block">
+                <span class="block-title">Operations number</span>
+                <div class="content">
+                    <div class="count"><img src="~/images/credit-card.svg" /> @Model.OperationsNumberByCard</div>
+                    <div class="count"><img src="~/images/wallet.svg" /> @Model.OperationsNumberByCash</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <div class="block">
+                <span class="block-title">Amount of money</span>
+                <div class="content">
+                    <div class="count"><img src="~/images/credit-card.svg" /> @Model.AmountOfMoneyByCard</div>
+                    <div class="count"><img src="~/images/wallet.svg" /> @Model.AmountOfMoneyByCash</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tips">
+    <div class="block">
+        <span class="block-title">Tips average</span>
+        <div class="content">
+            <div class="count"><img src="~/images/tag.svg" />@Model.TipsAverage</div>
+        </div>
+    </div>
+    <div class="block">
+        <span class="block-title">Tips numbers</span>
+        <div class="content">
+            <div class="count">@Model.TipsNumbers</div>
+        </div>
+    </div>
+    <div class="block">
+        <span class="block-title">Tips sum</span>
+        <div class="content">
+            <div class="count">@Model.TipsSum</div>
+        </div>
+    </div>
+</div>

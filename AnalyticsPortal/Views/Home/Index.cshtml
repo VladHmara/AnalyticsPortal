@@ -1,401 +1,106 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Analytics Portal";
 }
-@using AnalyticsPortal.ViewModels
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script src="~/js/jquery.unobtrusive-ajax.js"></script>
 <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 <link href="~/css/main.css" rel="stylesheet" />
-<div style="width:90%;">
-    <div class="orders-title">
-        Orders
-    </div>
-    <div class="orders-main">
-        <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-3">
-                <div class="block">
-                    <span class="block-title">Average check</span>
-                    <div class="content">
-                        <div class="count"><img src="~/images/tags.svg" /> $16.35</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-3">
-                <div class="block">
-                    <span class="block-title">Amount money</span>
-                    <div class="content">
-                        <div class="count"><img src="~/images/wallet.svg" /> $152375.05</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-3">
-                <div class="block">
-                    <span class="block-title">Number of orders</span>
-                    <div class="content">
-                        <div class="count"><img src="~/images/bill.svg" /> 9343</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-3">
-                <div class="block">
-                    <span class="block-title">Total ordered items</span>
-                    <div class="content">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 15485</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="ordes-chart">
-        <div class="chart-head">
-            <div class="chart-title">Orders diagramm</div>
-            <form id="formChart" asp-controller="Home" asp-action="Chart" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#chart">
-                <div class="buttons">
-                    <div>
-                        <label class="radio-inline"><input type="radio" onclick="ChartButtonClick()" name="type" value="Orders" checked>Number of orders</label>
-                        <label class="radio-inline"><input type="radio" onclick="ChartButtonClick()" name="type" value="Money">Money</label>
-                    </div>
-                    <div>
-                        <label class="radio-inline"><input type="radio" onclick="ChartButtonClick()" name="period" value="Day" checked>Day</label>
-                        <label class="radio-inline"><input type="radio" onclick="ChartButtonClick()" name="period" value="Week">Week</label>
-                        <label class="radio-inline"><input type="radio" onclick="ChartButtonClick()" name="period" value="Month">Month</label>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="chart-area row" id="chart">
-        </div>
-    </div>
-</div>
-<div style="width:90%; margin-top:20px;">
-    <div class="food-title">
-        Food
-    </div>
-    <div class="orders top-orders">
-        <div class="items-title">
-            Top orders
-        </div>
-        <div class="items">
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content top-orders-content">
-                    <div class="info top-orders-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
-            </div>
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content top-orders-content">
-                    <div class="info top-orders-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
-            </div>
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content top-orders-content">
-                    <div class="info top-orders-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
-            </div>
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content top-orders-content">
-                    <div class="info top-orders-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
-            </div>
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content top-orders-content">
-                    <div class="info top-orders-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
-            </div>
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content top-orders-content">
-                    <div class="info top-orders-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
-            </div>
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content top-orders-content">
-                    <div class="info top-orders-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
-            </div>
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content top-orders-content">
-                    <div class="info top-orders-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
-            </div>
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content top-orders-content">
-                    <div class="info top-orders-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
-            </div>
-            <div class="order last-order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content top-orders-content">
-                    <div class="info top-orders-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
-            </div>
 
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+    <div class="carousel-inner">
+        <div class="orders item active">
+            <div class="orders-title">
+                Orders
+            </div>
+            <div class="orders-main" id="orders-main">
+
+            </div>
+            <div class="ordes-chart">
+                <div class="chart-head">
+                    <div class="chart-title">Orders diagramm</div>
+                    <form id="formChart" asp-controller="Home" asp-action="Chart" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#chart-area">
+                        <div class="buttons">
+                            <div>
+                                <label class="radio-inline"><input type="radio" onclick="ShowChart()" name="type" value="Orders" checked>Number of orders</label>
+                                <label class="radio-inline"><input type="radio" onclick="ShowChart()" name="type" value="Money">Money</label>
+                            </div>
+                            <div>
+                                <label class="radio-inline"><input type="radio" onclick="ShowChart()" name="period" value="Day" checked>Day</label>
+                                <label class="radio-inline"><input type="radio" onclick="ShowChart()" name="period" value="Week">Week</label>
+                                <label class="radio-inline"><input type="radio" onclick="ShowChart()" name="period" value="Month">Month</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="chart-area row" id="chart-area">
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="orders unordered">
-        <div class="items-title">
-            Unordered
+        <div class="food item">
+            <div class="food-title">
+                Food
+            </div>
+            <div class="food-content" id="food-content">
+
+            </div>
         </div>
-        <div class="items">
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content unordered-content">
-                    <div class="info unordered-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
+        <div class="payments item">
+            <div class="payments-title">
+                Payments
             </div>
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content unordered-content">
-                    <div class="info unordered-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
-            </div>
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content unordered-content">
-                    <div class="info unordered-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
-            </div>
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content unordered-content">
-                    <div class="info unordered-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
-            </div>
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content unordered-content">
-                    <div class="info unordered-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
-            </div>
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content unordered-content">
-                    <div class="info unordered-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
-            </div>
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content unordered-content">
-                    <div class="info unordered-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
-            </div>
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content unordered-content">
-                    <div class="info unordered-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
-            </div>
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content unordered-content">
-                    <div class="info unordered-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
-            </div>
-            <div class="order">
-                <img src="~/images/jamadvice_com_ua_ratatui_20.jpg" />
-                <div class="content unordered-content">
-                    <div class="info unordered-info">
-                        <div>asdasd</div>
-                        <div>123</div>
-                    </div>
-                    <div class="statistic">
-                        <div class="count"><img src="~/images/rice-bowl.svg" /> 84</div>
-                        <div class="count"><img src="~/images/tags.svg" /> $384</div>
-                    </div>
-                </div>
+            <div class="payments-content" id="payments-content">
+
             </div>
         </div>
     </div>
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
 </div>
-<div style="width:90%;">
-    <div class="payments-title">
-        Payments
-    </div>
-    <div class="payments">
-        <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <div class="block">
-                    <span class="block-title">Average check</span>
-                    <div class="content">
-                        <div class="count"><img src="~/images/credit-card.svg" /> 16.35</div>
-                        <div class="count"><img src="~/images/wallet.svg" /> 16.35</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6">
-                <div class="block">
-                    <span class="block-title">Amount money</span>
-                    <div class="content">
-                        <div class="count"><img src="~/images/credit-card.svg" /> $16.35</div>
-                        <div class="count"><img src="~/images/wallet.svg" /> $152375.05</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="tips">
-        <div class="block">
-            <span class="block-title">Tips average</span>
-            <div class="content">
-                <div class="count"><img src="~/images/tag.svg" />16.35<small>%</small></div>
-            </div>
-        </div>
-        <div class="block">
-            <span class="block-title">Tips numbers</span>
-            <div class="content">
-                <div class="count">$152375.05</div>
-            </div>
-        </div>
-        <div class="block">
-            <span class="block-title">Tips sum</span>
-            <div class="content">
-                <div class="count">$152375.05</div>
-            </div>
-        </div>
-    </div>
-</div>
+
+
+
 <script>
-    function ChartButtonClick() {
+    ShowChart();
+
+    function ShowChart() {
         $("#formChart").submit();
     }
+
+    $.ajax({
+        type: 'GET',
+        url: '/Home/Orders',
+        success: function (data) {
+            if (data != '') {
+                $("#orders-main").html("");
+                $("#orders-main").append(data);
+            }
+        }
+    })
+
+    $.ajax({
+        type: 'GET',
+        url: '/Home/Payments',
+        success: function (data) {
+            if (data != '') {
+                $("#payments-content").html("");
+                $("#payments-content").append(data);
+            }
+        }
+    })
+
+    $.ajax({
+        type: 'GET',
+        url: '/Home/Food',
+        success: function (data) {
+            if (data != '') {
+                $("#food-content").html("");
+                $("#food-content").append(data);
+            }
+        }
+    })
 </script>
